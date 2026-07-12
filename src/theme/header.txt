@@ -1,0 +1,14 @@
+/*
+Theme Name: Boilerplate Theme
+Theme URI: https://example.com/boilerplate-theme
+Author: Boilerplate Theme Author
+Author URI: https://example.com
+Description: A battle-tested, high-performance WordPress custom theme starter framework developed to maximize development velocity on bespoke projects. Built around native WordPress standards, native custom Gutenberg block registrations, and automated namespacing to establish a clean, production-ready architecture from day one.
+Version: 1.0.0
+Tested up to: 6.5
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: boilerplate-theme
+Tags: custom-theme, block-theme, block-patterns, full-site-editing, block-editor, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-width-template, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-patterns, block-styles, wide-blocks, block-styles, wide-blocks, block-patterns, wide-blocks, block-styles
+*/

@@ -1,0 +1,115 @@
+/*--------------------------------------------------------------
+## 5.1 - Buttons (SCSS)
+--------------------------------------------------------------*/
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-normal);
+    border-radius: var(--radius-md);
+    border: 2px solid transparent;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+
+    &:focus-visible {
+        outline: none;
+        box-shadow: var(--focus-ring);
+    }
+
+    &:disabled,
+    &[disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    /* Primary Button */
+    &-primary {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+        color: var(--color-white);
+
+        &:hover:not(:disabled) {
+            background-color: var(--color-primary-hover);
+            border-color: var(--color-primary-hover);
+            color: var(--color-white);
+            text-decoration: none;
+        }
+    }
+
+    /* Secondary Button */
+    &-secondary {
+        background-color: var(--color-secondary);
+        border-color: var(--color-secondary);
+        color: var(--color-white);
+
+        &:hover:not(:disabled) {
+            background-color: var(--color-secondary-hover);
+            border-color: var(--color-secondary-hover);
+            color: var(--color-white);
+            text-decoration: none;
+        }
+    }
+
+    /* Outline Button */
+    &-outline {
+        background-color: transparent;
+        border-color: var(--color-border-medium);
+        color: var(--color-text-primary);
+
+        &:hover:not(:disabled) {
+            background-color: var(--color-bg-tertiary);
+            border-color: var(--color-border-dark);
+            color: var(--color-text-primary);
+            text-decoration: none;
+        }
+    }
+
+    /* Ghost Button */
+    &-ghost {
+        background-color: transparent;
+        border-color: transparent;
+        color: var(--color-text-primary);
+
+        &:hover:not(:disabled) {
+            background-color: var(--color-bg-tertiary);
+            color: var(--color-text-primary);
+            text-decoration: none;
+        }
+    }
+
+    /* Button Sizes */
+    &-sm {
+        padding: var(--space-2) var(--space-4);
+        font-size: var(--font-size-xs);
+        gap: var(--space-1);
+    }
+
+    &-lg {
+        padding: var(--space-4) var(--space-8);
+        font-size: var(--font-size-base);
+        gap: var(--space-3);
+    }
+
+    &-xl {
+        padding: var(--space-5) var(--space-10);
+        font-size: var(--font-size-lg);
+        gap: var(--space-3);
+    }
+
+    /* Full Width Button */
+    &-block {
+        width: 100%;
+    }
+
+    /* Button with Icon */
+    &-icon {
+        padding-left: var(--space-3);
+        padding-right: var(--space-3);
+    }
+}

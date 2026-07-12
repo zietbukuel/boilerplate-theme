@@ -1,0 +1,22 @@
+{
+  "name": "boilerplate-theme",
+  "version": "1.0.0",
+  "description": "Custom WordPress theme starter boilerplate.",
+  "main": "build/main.js",
+  "scripts": {
+    "start": "wp-scripts start",
+    "build": "wp-scripts build"
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "gutenberg"
+  ],
+  "author": "Boilerplate Theme Author",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "@babel/runtime": "^8.0.0",
+    "@wordpress/scripts": "^28.6.0",
+    "sass": "^1.101.0"
+  }
+}

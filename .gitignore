@@ -1,0 +1,28 @@
+# OS files
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Dependency directories
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# WordPress/DDEV local config & logs
+wp-config-local.php
+debug.log
+*.log
+
+# Theme Renaming backups
+.rename-backup-*
+
+# Generated compiled assets
+/build/
+/style.css

@@ -1,0 +1,297 @@
+/**
+ * Feature Grid Block Styles (SCSS)
+ * 
+ * Styles for the Feature Grid block (both editor and frontend).
+ * Uses CSS custom properties from the main theme for consistency.
+ * 
+ * @package Boilerplate_Theme
+ * @since 1.0.0
+ */
+
+// Responsive media query mixins
+@mixin mobile {
+    @media (max-width: 640px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: 641px) and (max-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 1024px) {
+        @content;
+    }
+}
+
+/* ==========================================================================
+   Feature Grid Block
+   ========================================================================== */
+.block--feature-grid {
+    // Root variables scoped to this block
+    --feature-grid-padding: 4rem 1rem;
+    --feature-grid-gap: 2rem;
+    --feature-grid-header-max-width: 720px;
+    --feature-grid-item-padding: 2rem;
+    --feature-grid-icon-size: 4rem;
+    --feature-grid-icon-font-size: 2rem;
+    --feature-grid-transition: all 0.3s ease;
+
+    padding: var(--feature-grid-padding);
+    background-color: var(--color-bg-primary);
+
+    &.alignwide,
+    &.alignfull {
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        max-width: 100vw;
+    }
+
+    @include mobile {
+        --feature-grid-padding: 3rem 1rem;
+        --feature-grid-gap: 1.5rem;
+        --feature-grid-item-padding: 1.5rem;
+        --feature-grid-icon-size: 3.5rem;
+    }
+
+    @media print {
+        padding: 2rem 0;
+        background: none;
+    }
+
+    /* Container */
+    .block-feature-grid__container {
+        max-width: var(--container-xl);
+        margin: 0 auto;
+    }
+
+    /* Section Header */
+    .block-feature-grid__header {
+        text-align: center;
+        margin-bottom: 3rem;
+        max-width: var(--feature-grid-header-max-width);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Grid layout */
+    .block-feature-grid__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--feature-grid-gap);
+
+        @media (min-width: 640px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include desktop {
+            &[data-columns="2"] {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            &[data-columns="3"] {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            &[data-columns="4"] {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @include tablet {
+            &[data-columns="3"],
+            &[data-columns="4"] {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+
+    /* Feature Item (Base Card) */
+    .block-feature-grid__item {
+        background-color: var(--color-bg-primary);
+        border: 1px solid var(--color-border-light);
+        border-radius: var(--radius-xl);
+        padding: var(--feature-grid-item-padding);
+        transition: var(--feature-grid-transition);
+        text-align: center;
+
+        &:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-4px);
+            border-color: var(--color-border-medium);
+
+            .block-feature-grid__icon {
+                background-color: var(--color-primary);
+                color: var(--color-white);
+                transform: scale(1.05);
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                transform: none;
+                .block-feature-grid__icon {
+                    transform: none;
+                }
+            }
+
+            @media print {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+
+        @media print {
+            border: 1px solid var(--color-border-medium);
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+    }
+
+    /* Layout Variants */
+
+    // Default layout - centered content with icon on top
+    &.block-feature-grid--default {
+        .block-feature-grid__item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+    }
+
+    // Cards layout - aligned left
+    &.block-feature-grid--cards {
+        .block-feature-grid__item {
+            text-align: left;
+            align-items: flex-start;
+        }
+    }
+
+    // Minimal layout - icon left, content right
+    &.block-feature-grid--minimal {
+        .block-feature-grid__item {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            text-align: left;
+            gap: 1.5rem;
+
+            @include mobile {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        .block-feature-grid__icon {
+            flex-shrink: 0;
+            margin-bottom: 0;
+
+            @include mobile {
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    /* Feature Link Wrapper */
+    .block-feature-grid__link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        width: 100%;
+        height: 100%;
+
+        &:focus-visible {
+            outline: none;
+            box-shadow: inset 0 0 0 3px var(--color-primary-light);
+            border-radius: var(--radius-xl);
+        }
+    }
+
+    /* Icon element styles */
+    .block-feature-grid__icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--feature-grid-icon-size);
+        height: var(--feature-grid-icon-size);
+        border-radius: var(--radius-xl);
+        background-color: var(--color-primary-light);
+        color: var(--color-primary);
+        margin-bottom: 1.25rem;
+        font-size: var(--feature-grid-icon-font-size);
+        flex-shrink: 0;
+        transition: var(--feature-grid-transition);
+
+        svg,
+        img {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        img {
+            object-fit: contain;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+
+        @media print {
+            background-color: var(--color-gray-100) !important;
+            color: var(--color-text-primary) !important;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+    }
+
+    /* Title & Description */
+    .block-feature-grid__title {
+        font-size: var(--font-size-xl);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-text-primary);
+        margin-bottom: 0.75rem;
+        line-height: var(--line-height-snug);
+    }
+
+    .block-feature-grid__description {
+        font-size: var(--font-size-base);
+        color: var(--color-text-secondary);
+        line-height: var(--line-height-relaxed);
+        margin-bottom: 0;
+    }
+
+    /* Empty State (Editor Only) */
+    .block-feature-grid__empty {
+        padding: 3rem;
+        text-align: center;
+        color: var(--color-text-muted);
+        border: 2px dashed var(--color-border-medium);
+        border-radius: var(--radius-xl);
+        background-color: var(--color-bg-secondary);
+    }
+}
+
+/* ==========================================================================
+   Editor Preview Styles
+   ========================================================================== */
+.editor-styles-wrapper {
+    .block--feature-grid {
+        &:empty::before {
+            content: 'Feature Grid Block';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            color: var(--color-text-muted);
+            font-style: italic;
+            border: 2px dashed var(--color-border-medium);
+            border-radius: var(--radius-xl);
+            background-color: var(--color-bg-secondary);
+        }
+    }
+}
